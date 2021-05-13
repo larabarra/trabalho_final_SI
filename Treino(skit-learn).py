@@ -4,13 +4,10 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPRegressor
-from sklearn.metrics import classification_report, confusion_matrix
 import matplotlib.pyplot as plt
 import numpy as np
 import random
 import pickle
-import joblib
-from sklearn.metrics import mean_absolute_error
 
 def normaliza(array):
     
@@ -107,15 +104,14 @@ predict_train_original = desnormaliza(y, predict_train)
 predict_test_original = desnormaliza(y, predict_test)
 predict_data_original = desnormaliza(y, predict_data)
 
-erro = erro_relativo(y_test_original, predict_test_original)
+erro = erro_medio(y_test,predict_test_original)
 
 
-#plt.plot(x,predict_data_original,color='red')
+plt.plot(x,predict_data_original,color='red')
+plt.plot(x,y,color='blue')
 #plt.plot(x,y,color='blue')
 #plt.plotr(x_test_original,y_test_original,color='green')
 #plt.plot(x_test_original,predict_test_original,color='green')
 #plt.plot(x_test_original,y_test_original,color='red')
 #print("Erro total:", np.sum(erro))
 
-#plt.scatter(x_train,y_train,color='green')
-#plt.scatter(x_train,predict_train,color='blue') 

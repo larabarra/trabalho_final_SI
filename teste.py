@@ -7,7 +7,6 @@ Created on Thu Apr 29 07:45:11 2021
 """
 
 import pandas as pd
-from sklearn import model_selection
 import joblib
 import numpy as np
 
@@ -39,14 +38,20 @@ y_max = np.max(y)
 
 mpl = joblib.load('treino.sav')
 
+
 entrada = int(input("Insira o valor da entrada:\n"))
+while True:
 
-entrada_normalizada = normaliza(x_min,x_max,entrada)
+    entrada_normalizada = normaliza(x_min,x_max,entrada)
 
-entrada_normalizada = entrada_normalizada.reshape(1,-1)
+    entrada_normalizada = entrada_normalizada.reshape(1,-1)
 
-saida = mlp.predict(entrada_normalizada)
+    saida = mpl.predict(entrada_normalizada)
 
-saida = desnormaliza(y_min, y_max, saida)
-print(saida)
-
+    saida = desnormaliza(y_min, y_max, saida)
+    print(saida)
+    entrada = (input("Insira o valor da entrada:\n"))
+    if (entrada == "sair"):
+        break
+    else:
+        entrada = int(entrada)
